@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProyectoLibreria.Models;
+using ProyectoLibreria.Services;
 
 namespace ProyectoLibreria
 {
@@ -15,6 +16,10 @@ namespace ProyectoLibreria
             {
                 o.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL"));
             });
+
+            builder.Services.AddScoped<IServicioLista, ServicioLista>();
+            builder.Services.AddScoped<IServicioImagen, ServicioImagen>();
+            builder.Services.AddScoped<IServicioUsuario, ServicioUsuaurio>();
 
             var app = builder.Build();
 
